@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private EditText editText;
-   double input1 = 0 , input2 =0;
+   Integer input1 = 0 , input2 =0;
     boolean Addition, Subtract, Multify, Division, decimal;
     private Button btnMultify, btnDel, btnZero, btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven, btnEight, btnNine, btnAdd, btnSub, btnDivide, btnEqual;
 
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Binding
 
-        //btnDel = findViewById(R.id.btnDel);
+        btnDel = findViewById(R.id.btnDel);
         editText = findViewById(R.id.etText);
         btnAdd = findViewById(R.id.btnAdd);
         btnDivide = findViewById(R.id.btnDivide);
@@ -111,20 +111,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(editText.getText().length() !=0){
-                    input1 = Float.parseFloat(editText.getText() + "");
+                    input1 = Integer.parseInt(editText.getText() + "");
                     Addition = true;
                     decimal =false;
                     editText.setText(null);
                 }
             }
         });
+
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(editText.getText().length() !=0){
-                    input1 = Float.parseFloat(editText.getText() + "");
+                    input1 = Integer.parseInt(editText.getText() + "");
                     Subtract = true;
-                    decimal =false;
+                    decimal = false;
                     editText.setText(null);
                 }
             }
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(editText.getText().length() !=0){
-                    input1 = Float.parseFloat(editText.getText() + "");
+                    input1 = Integer.parseInt(editText.getText() + "");
                     Multify = true;
                     decimal = false;
                     editText.setText(null);
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(editText.getText().length() !=0){
-                    input1 = Float.parseFloat(editText.getText() + "");
+                    input1 = Integer.parseInt(editText.getText() + "");
                     Division = true;
                     decimal = false;
                     editText.setText(null);
@@ -157,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (Addition || Subtract || Multify || Division ){
-                      input2 = Float.parseFloat(editText.getText() + "");
+                    input2 = Integer.parseInt(editText.getText() + "");
                 }
                 if (Addition){
                     editText.setText(input1 + input2 + "");
@@ -183,8 +184,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
          public void onClick(View v) {
                 editText.setText("");
-                input1 = 0.0;
-                input2 = 0.0;
             }
         });
 
