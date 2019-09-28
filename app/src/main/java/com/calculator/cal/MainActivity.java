@@ -11,21 +11,22 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private TextView editText;
    double input1 = 0 , input2 =0;
-    boolean Addition, Subtract, Division, decimal;
-    private Button btnDel, btnZero, btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven, btnEight, btnNine, btnAdd, btnSub, btnDivide, btnPercentage, btnEqual;
+    boolean Addition, Subtract, Multify, Division, decimal;
+    private Button btnMultify, btnDel, btnZero, btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven, btnEight, btnNine, btnAdd, btnSub, btnDivide, btnEqual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Binding
+
         btnDel = findViewById(R.id.btnDel);
         editText = findViewById(R.id.etText);
         btnAdd = findViewById(R.id.btnAdd);
         btnDivide = findViewById(R.id.btnDivide);
         btnSub = findViewById(R.id.btnSub);
         btnEqual = findViewById(R.id.btnEqual);
-        btnPercentage = findViewById(R.id.btnPercentage);
+        btnMultify = findViewById(R.id.btnMultiply);
         btnZero = findViewById(R.id.btnZero);
         btnOne = findViewById(R.id.btnOne);
         btnTwo = findViewById(R.id.btnTwo);
@@ -128,6 +129,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        btnMultify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(editText.getText().length() !=0){
+                    input1 = Float.parseFloat(editText.getText() + "");
+                    Multify = true;
+                    decimal = false;
+                    editText.setText(null);
+                }
+            }
+        });
+
         btnDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         btnEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Addition || Subtract || Division ){
+                if (Addition || Subtract || Multify || Division ){
                       input2 = Float.parseFloat(editText.getText() + "");
                 }
                 if (Addition){
@@ -154,6 +167,11 @@ public class MainActivity extends AppCompatActivity {
                     editText.setText(input1 - input2 + "");
                     Subtract = false;
                 }
+                if(Multify){
+                    editText.setText(input1 * input2 + "");
+                    Multify = false;
+                }
+
                 if(Division){
                     editText.setText(input1 / input2 + "");
                     Division = false;
