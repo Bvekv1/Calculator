@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView editText;
+    private EditText editText;
    double input1 = 0 , input2 =0;
     boolean Addition, Subtract, Multify, Division, decimal;
     private Button btnMultify, btnDel, btnZero, btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven, btnEight, btnNine, btnAdd, btnSub, btnDivide, btnEqual;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Binding
 
-        btnDel = findViewById(R.id.btnDel);
+        //btnDel = findViewById(R.id.btnDel);
         editText = findViewById(R.id.etText);
         btnAdd = findViewById(R.id.btnAdd);
         btnDivide = findViewById(R.id.btnDivide);
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+         public void onClick(View v) {
                 editText.setText("");
                 input1 = 0.0;
                 input2 = 0.0;
